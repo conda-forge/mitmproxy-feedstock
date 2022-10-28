@@ -1,13 +1,13 @@
 {% set name = "mitmproxy" %}
-{% set version = "8.1.1" %}
+{% set version = "9.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/mitmproxy/mitmproxy/archive/v{{ version }}.tar.gz
-  sha256: 212e81bec40e1d2a894d73a337f076a3010d981249e513565e9246f29822d06c
+  url: https://github.com/mitmproxy/mitmproxy/archive/{{ version }}.tar.gz
+  sha256: c768fe52dac47137ddaf85c2aae0576779f8e5a04756e0be12b110a01c6435b3
 
 build:
   entry_points:
@@ -15,8 +15,8 @@ build:
     - mitmdump = mitmproxy.tools.main:mitmdump
     - mitmweb = mitmproxy.tools.main:mitmweb
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
-  skip: True  # [py<39]
+  number: 0
+  skip: true  # [py<39]
 
 requirements:
   build:
