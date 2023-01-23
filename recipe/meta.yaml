@@ -15,7 +15,7 @@ build:
     - mitmdump = mitmproxy.tools.main:mitmdump
     - mitmweb = mitmproxy.tools.main:mitmweb
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 2
   skip: True  # [py<39]
 
 requirements:
