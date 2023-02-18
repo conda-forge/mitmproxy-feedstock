@@ -50,7 +50,7 @@ requirements:
     - urwid >=2.1.1,<2.2
     - wsproto >=1.0,<1.3
     - zstandard >=0.11,<0.20
-    - mitmproxy-wireguard
+    - mitmproxy_wireguard
     - pydivert >=2.0.3,<2.2  # [win]
     - typing-extensions >=4.3,<4.5  # [py<310]
 
