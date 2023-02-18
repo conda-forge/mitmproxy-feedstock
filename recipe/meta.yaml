@@ -27,31 +27,32 @@ requirements:
     - python
   run:
     - asgiref >=3.2.10,<3.6
-    - blinker >=1.4,<1.5
     - brotli-python >=1.0,<1.1
     - certifi >=2019.9.11
-    - cryptography >=36,<38
-    - flask >=1.1.1,<2.2
-    - h11 >=0.11,<0.14
+    - cryptography >=38.0,<38.1
+    - flask >=1.1.1,<2.3
+    - h11 >=0.11,<0.15
     - h2 >=4.1,<5
     - hyperframe >=6.0,<7
-    - kaitaistruct >=0.7,<0.10
+    - kaitaistruct >=0.10,<0.11
     - ldap3 >=2.8,<2.10
     - msgpack-python >=1.0.0,<1.1.0
     - passlib >=1.6.5,<1.8
     - protobuf >=3.14,<5
     - publicsuffix2 >=2.20190812,<3
-    - pydivert >=2.0.3,<2.2          # [win]
-    - pyopenssl >=21.0,<22.1
+    - pyopenssl >=22.1,<22.2
     - pyparsing >=2.4.2,<3.1
     - pyperclip >=1.6.0,<1.9
-    - python
+    - python >=3.9
     - ruamel.yaml >=0.16,<0.18
     - sortedcontainers >=2.3,<2.5
     - tornado >=6.1,<7
     - urwid >=2.1.1,<2.2
-    - wsproto >=1.0,<1.2
-    - zstandard >=0.11,<0.19
+    - wsproto >=1.0,<1.3
+    - zstandard >=0.11,<0.20
+    - mitmproxy-wireguard
+    - pydivert >=2.0.3,<2.2  # [win]
+    - typing-extensions >=4.3,<4.5  # [py<310]
 
 test:
   imports:
