@@ -1,11 +1,11 @@
-About mitmproxy
-===============
+About mitmproxy-feedstock
+=========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/mitmproxy-feedstock/blob/main/LICENSE.txt)
 
 Home: http://mitmproxy.org
 
 Package license: MIT AND BSD-3-Clause
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/mitmproxy-feedstock/blob/main/LICENSE.txt)
 
 Summary: An interactive TLS-capable intercepting HTTP proxy for penetration testers and software developers.
 
