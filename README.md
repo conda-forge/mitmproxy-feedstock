@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/mitmproxy-feeds
 
 Home: http://mitmproxy.org
 
-Package license: MIT AND BSD-3-Clause AND LGPL-2.0
+Package license: 
 
 Summary: An interactive TLS-capable intercepting HTTP proxy for penetration testers and software developers.
 
@@ -214,4 +214,5 @@ Feedstock Maintainers
 * [@AdrianFreundQC](https://github.com/AdrianFreundQC/)
 * [@freundTech](https://github.com/freundTech/)
 * [@jonashaag](https://github.com/jonashaag/)
+* [@wolfv](https://github.com/wolfv/)
 
