@@ -1,4 +1,4 @@
-{% set version = "10.1.0" %}
+{% set version = "10.1.4" %}
 {% set aioquic_mitmproxy_version = "0.9.20.3" %}
 {% set urwid_mitmproxy_version = "2.1.2.1" %}
 {% set mitmproxy_rs_version = "0.3.7" %}
@@ -9,7 +9,7 @@ package:
 
 source:
   - url: https://github.com/mitmproxy/mitmproxy/archive/{{ version }}.tar.gz
-    sha256: b243509a55aedf54badefc5d1f49450c37fb254f95e6891c53c1e5782147bcf9
+    sha256: faddb3d312b2f71b773ddafede834bc06bf2ba128670fbb1717969054a2b6a13
     folder: mitmproxy
   - url: https://github.com/meitinger/aioquic_mitmproxy/archive/{{ aioquic_mitmproxy_version }}.tar.gz
     sha256: 63902a08fcc2a5e89f0faa3b4f918db30b45d1a613941530a7342e747c9f5df3
@@ -100,8 +100,7 @@ about:
   home: http://mitmproxy.org
   summary: An interactive TLS-capable intercepting HTTP proxy for penetration testers and software developers.
   license: >-
-    MIT AND BSD-3-Clause AND LGPL-2.0-only
-    AND (LGPL-3.0-only OR GPL-2.0-only)  # [win]
+    MIT AND BSD-3-Clause AND LGPL-2.0-only AND (LGPL-3.0-only OR GPL-2.0-only)  # [win]
   license_file:
     - mitmproxy/LICENSE
     - aioquic_mitmproxy/LICENSE
