@@ -12,13 +12,13 @@ source:
     sha256: 7052479c3fb68369574ad72190ccb624a64741fd3034ba111653a7fe3dd67887
     folder: mitmproxy
   - url: https://github.com/meitinger/aioquic_mitmproxy/archive/{{ aioquic_mitmproxy_version }}.tar.gz
-    sha256: 63902a08fcc2a5e89f0faa3b4f918db30b45d1a613941530a7342e747c9f5df3
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
     folder: aioquic_mitmproxy
   - url: https://github.com/mitmproxy/urwid-mitmproxy/archive/{{ urwid_mitmproxy_version }}.tar.gz
     sha256: e13544f6f6deb5d276696760ec022d656a95415e70e06c77c452461e5f062675
     folder: urwid-mitmproxy
   - url: https://github.com/mitmproxy/mitmproxy_rs/archive/{{ mitmproxy_rs_version }}.tar.gz
-    sha256: faf4ff0a1f03fa4f732f27a658d386d7623573aa4f70c968856b862270eecbf5
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
     folder: mitmproxy-rs
 
 build:
