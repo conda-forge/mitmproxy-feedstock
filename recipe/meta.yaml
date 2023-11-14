@@ -18,7 +18,7 @@ source:
     sha256: e13544f6f6deb5d276696760ec022d656a95415e70e06c77c452461e5f062675
     folder: urwid-mitmproxy
   - url: https://github.com/mitmproxy/mitmproxy_rs/archive/{{ mitmproxy_rs_version }}.tar.gz
-    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    sha256: f1d0ae7a98f1c45a524edded3ccd21a744fdac242d03fff39ee674762f664b1f
     folder: mitmproxy-rs
 
 build:
