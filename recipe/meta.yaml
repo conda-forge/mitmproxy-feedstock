@@ -22,7 +22,7 @@ source:
     folder: mitmproxy-rs
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<310]
   script:
     {% set _pip_cmd = PYTHON + " -m pip install -vv --no-deps --no-build-isolation" %}
@@ -100,8 +100,8 @@ about:
   home: http://mitmproxy.org
   summary: An interactive TLS-capable intercepting HTTP proxy for penetration testers and software developers.
   license: >-
-    MIT AND BSD-3-Clause AND LGPL-2.0-only
-    AND (LGPL-3.0-only OR GPL-2.0-only)  # [win]
+    MIT AND BSD-3-Clause AND LGPL-2.0-only  # [not win]
+    MIT AND BSD-3-Clause AND LGPL-2.0-only AND (LGPL-3.0-only OR GPL-2.0-only)  # [win]
   license_file:
     - mitmproxy/LICENSE
     - aioquic_mitmproxy/LICENSE
