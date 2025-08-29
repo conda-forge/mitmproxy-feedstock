@@ -76,7 +76,8 @@ requirements:
     - pyperclip >=1.6.0,<1.9
     - python
     - ruamel.yaml >=0.16,<0.19
-    - sortedcontainers >=2.3,<2.5
+    - service-identity >=23.1.0
+    - sortedcontainers >=2.3,<2.5    # for aioquic_mitmproxy
     - tornado >=6.2,<7
     - typing-extensions >=4.3,<5     # [py<311]
     - wsproto >=1.0,<1.3
