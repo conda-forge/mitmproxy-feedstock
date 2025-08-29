@@ -22,16 +22,15 @@ source:
     folder: mitmproxy-rs
 
 build:
-  number: 0
-  skip: true  # [py<310]
+  number: 1
+  skip: true  # [py<310 or py>312]
   script:
-    {% set _pip_cmd = PYTHON + " -m pip install -vv --no-deps --no-build-isolation" %}
-    - {{ _pip_cmd }} ./aioquic_mitmproxy
-    - {{ _pip_cmd }} ./urwid-mitmproxy
-    - {{ _pip_cmd }} ./mitmproxy-rs/mitmproxy-macos    # [osx]
-    - {{ _pip_cmd }} ./mitmproxy-rs/mitmproxy-windows  # [win]
-    - {{ _pip_cmd }} ./mitmproxy-rs/mitmproxy-rs
-    - {{ _pip_cmd }} ./mitmproxy
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./aioquic_mitmproxy
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./urwid-mitmproxy
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./mitmproxy-rs/mitmproxy-macos    # [osx]
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./mitmproxy-rs/mitmproxy-windows  # [win]
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./mitmproxy-rs/mitmproxy-rs
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./mitmproxy
   entry_points:
     - mitmproxy = mitmproxy.tools.main:mitmproxy
     - mitmdump = mitmproxy.tools.main:mitmdump
@@ -43,6 +42,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - {{ compiler('rust') }}
     - {{ compiler('c') }}                    # [unix]
+    - {{ stdlib('c') }}
     - python >=3.10
     - pip
     - maturin >=1.2.3,<2                      # [build_platform != target_platform]
