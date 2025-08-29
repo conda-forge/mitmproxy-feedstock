@@ -1,7 +1,7 @@
-{% set version = "10.1.0" %}
-{% set aioquic_mitmproxy_version = "0.9.20.3" %}
+{% set version = "10.1.5" %}
+{% set aioquic_mitmproxy_version = "0.9.21.1" %}
 {% set urwid_mitmproxy_version = "2.1.2.1" %}
-{% set mitmproxy_rs_version = "0.3.7" %}
+{% set mitmproxy_rs_version = "0.4.1" %}
 
 package:
   name: mitmproxy
@@ -9,29 +9,28 @@ package:
 
 source:
   - url: https://github.com/mitmproxy/mitmproxy/archive/{{ version }}.tar.gz
-    sha256: b243509a55aedf54badefc5d1f49450c37fb254f95e6891c53c1e5782147bcf9
+    sha256: 7052479c3fb68369574ad72190ccb624a64741fd3034ba111653a7fe3dd67887
     folder: mitmproxy
   - url: https://github.com/meitinger/aioquic_mitmproxy/archive/{{ aioquic_mitmproxy_version }}.tar.gz
-    sha256: 63902a08fcc2a5e89f0faa3b4f918db30b45d1a613941530a7342e747c9f5df3
+    sha256: 6f701da51988b690421db0a7df7a3ef62fd37e5a4fa77800983096375ac21ec8
     folder: aioquic_mitmproxy
   - url: https://github.com/mitmproxy/urwid-mitmproxy/archive/{{ urwid_mitmproxy_version }}.tar.gz
     sha256: e13544f6f6deb5d276696760ec022d656a95415e70e06c77c452461e5f062675
     folder: urwid-mitmproxy
   - url: https://github.com/mitmproxy/mitmproxy_rs/archive/{{ mitmproxy_rs_version }}.tar.gz
-    sha256: faf4ff0a1f03fa4f732f27a658d386d7623573aa4f70c968856b862270eecbf5
+    sha256: f1d0ae7a98f1c45a524edded3ccd21a744fdac242d03fff39ee674762f664b1f
     folder: mitmproxy-rs
 
 build:
   number: 0
-  skip: true  # [py<310]
+  skip: true  # [py<310 or py>312]
   script:
-    {% set _pip_cmd = PYTHON + " -m pip install -vv --no-deps --no-build-isolation" %}
-    - {{ _pip_cmd }} ./aioquic_mitmproxy
-    - {{ _pip_cmd }} ./urwid-mitmproxy
-    - {{ _pip_cmd }} ./mitmproxy-rs/mitmproxy-macos    # [osx]
-    - {{ _pip_cmd }} ./mitmproxy-rs/mitmproxy-windows  # [win]
-    - {{ _pip_cmd }} ./mitmproxy-rs/mitmproxy-rs
-    - {{ _pip_cmd }} ./mitmproxy
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./aioquic_mitmproxy
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./urwid-mitmproxy
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./mitmproxy-rs/mitmproxy-macos    # [osx]
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./mitmproxy-rs/mitmproxy-windows  # [win]
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./mitmproxy-rs/mitmproxy-rs
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./mitmproxy
   entry_points:
     - mitmproxy = mitmproxy.tools.main:mitmproxy
     - mitmdump = mitmproxy.tools.main:mitmdump
@@ -43,6 +42,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - {{ compiler('rust') }}
     - {{ compiler('c') }}                    # [unix]
+    - {{ stdlib("c") }}
     - python >=3.10
     - pip
     - maturin >=1.2.3,<2                      # [build_platform != target_platform]
@@ -56,10 +56,10 @@ requirements:
     - maturin >=1.2.3,<2
   run:
     - asgiref >=3.2.10,<3.8
-    - brotli-python >=1.0,<1.1
+    - brotli-python >=1.0,<1.2
     - certifi >=2019.9.11
     - cryptography >=38,<41.1
-    - flask >=1.1.1,<2.4
+    - flask >=1.1.1,<3.1
     - h11 >=0.11,<0.15
     - h2 >=4.1,<5
     - hyperframe >=6.0,<7
@@ -71,16 +71,17 @@ requirements:
     - publicsuffix2 >=2.20190812,<3
     - pydivert >=2.0.3,<2.2          # [win]
     - pylsqpack >=0.3.3,<0.4.0       # for aioquic_mitmproxy
-    - pyopenssl >=22.1,<23.2
+    - pyopenssl >=22.1,<23.4
     - pyparsing >=2.4.2,<3.2
     - pyperclip >=1.6.0,<1.9
     - python
-    - ruamel.yaml >=0.16,<0.18
-    - sortedcontainers >=2.3,<2.5
+    - ruamel.yaml >=0.16,<0.19
+    - service-identity >=23.1.0
+    - sortedcontainers >=2.3,<2.5    # for aioquic_mitmproxy
     - tornado >=6.2,<7
-    - typing-extensions >=4.3,<4.5   # [py<311]
+    - typing-extensions >=4.3,<5     # [py<311]
     - wsproto >=1.0,<1.3
-    - zstandard >=0.11,<0.22
+    - zstandard >=0.11,<0.23
 
 test:
   imports:
