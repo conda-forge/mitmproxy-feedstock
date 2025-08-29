@@ -25,13 +25,12 @@ build:
   number: 0
   skip: true  # [py<310 and py>313]
   script:
-    {% set _pip_cmd = PYTHON + " -m pip install -vv --no-deps --no-build-isolation" %}
-    - {{ _pip_cmd }} ./aioquic_mitmproxy
-    - {{ _pip_cmd }} ./urwid-mitmproxy
-    - {{ _pip_cmd }} ./mitmproxy-rs/mitmproxy-macos    # [osx]
-    - {{ _pip_cmd }} ./mitmproxy-rs/mitmproxy-windows  # [win]
-    - {{ _pip_cmd }} ./mitmproxy-rs/mitmproxy-rs
-    - {{ _pip_cmd }} ./mitmproxy
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./aioquic_mitmproxy
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./urwid-mitmproxy
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./mitmproxy-rs/mitmproxy-macos    # [osx]
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./mitmproxy-rs/mitmproxy-windows  # [win]
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./mitmproxy-rs/mitmproxy-rs
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./mitmproxy
   entry_points:
     - mitmproxy = mitmproxy.tools.main:mitmproxy
     - mitmdump = mitmproxy.tools.main:mitmdump
