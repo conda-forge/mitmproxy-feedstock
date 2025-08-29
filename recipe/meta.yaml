@@ -23,7 +23,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<310]
+  skip: true  # [py<310 and py>313]
   script:
     {% set _pip_cmd = PYTHON + " -m pip install -vv --no-deps --no-build-isolation" %}
     - {{ _pip_cmd }} ./aioquic_mitmproxy
