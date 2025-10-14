@@ -22,7 +22,7 @@ source:
     folder: mitmproxy-rs
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<310]
   script:
     {% set _pip_cmd = PYTHON + " -m pip install -vv --no-deps --no-build-isolation" %}
@@ -43,6 +43,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - {{ compiler('rust') }}
     - {{ compiler('c') }}                    # [unix]
+    - {{ stdlib("c") }}                      # [unix]
     - python >=3.10
     - pip
     - maturin >=1.2.3,<2                      # [build_platform != target_platform]
