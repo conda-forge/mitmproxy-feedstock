@@ -43,17 +43,17 @@ requirements:
     - {{ compiler('rust') }}
     - {{ compiler('c') }}                    # [unix]
     - {{ stdlib("c") }}                      # [unix]
-    - python
-    - pip
-    - maturin >=1.2.3,<2                      # [build_platform != target_platform]
+    - python >=3.10
+    - pip <24
+    - maturin >=1.2.3,<2                     # [build_platform != target_platform]
     - hatchling                              # [build_platform != target_platform]
     - cargo-bundle-licenses
   host:
-    - pip
+    - pip <24
     - python
     - hatchling
-    - python
     - maturin >=1.2.3,<2
+    - setuptools <69
   run:
     - asgiref >=3.2.10,<3.8
     - bcrypt <5
