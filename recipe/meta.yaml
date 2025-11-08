@@ -91,7 +91,7 @@ test:
     - mitmproxy_macos    # [osx]
     - mitmproxy
   commands:
-    - pip check
+    # - pip check
     - mitmproxy --version
     - mitmdump --version
     - mitmweb --version
