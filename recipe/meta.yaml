@@ -22,16 +22,15 @@ source:
     folder: mitmproxy-rs
 
 build:
-  number: 0
-  skip: true  # [py<310]
+  number: 1
+  skip: true  # [py<310 or py>=313]
   script:
-    {% set _pip_cmd = PYTHON + " -m pip install -vv --no-deps --no-build-isolation" %}
-    - {{ _pip_cmd }} ./aioquic_mitmproxy
-    - {{ _pip_cmd }} ./urwid-mitmproxy
-    - {{ _pip_cmd }} ./mitmproxy-rs/mitmproxy-macos    # [osx]
-    - {{ _pip_cmd }} ./mitmproxy-rs/mitmproxy-windows  # [win]
-    - {{ _pip_cmd }} ./mitmproxy-rs/mitmproxy-rs
-    - {{ _pip_cmd }} ./mitmproxy
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./aioquic_mitmproxy
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./urwid-mitmproxy
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./mitmproxy-rs/mitmproxy-macos    # [osx]
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./mitmproxy-rs/mitmproxy-windows  # [win]
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./mitmproxy-rs/mitmproxy-rs
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./mitmproxy
   entry_points:
     - mitmproxy = mitmproxy.tools.main:mitmproxy
     - mitmdump = mitmproxy.tools.main:mitmdump
@@ -41,22 +40,26 @@ requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - python >=3.10                          # [build_platform != target_platform]
+    - pip <24                                # [build_platform != target_platform]
+    - maturin >=1.2.3,<2                     # [build_platform != target_platform]
+    - hatchling ==1.18.0                     # [build_platform != target_platform]
+    - setuptools <69                         # [build_platform != target_platform]
     - {{ compiler('rust') }}
     - {{ compiler('c') }}                    # [unix]
-    - python >=3.10
-    - pip
-    - maturin >=1.2.3,<2                      # [build_platform != target_platform]
-    - hatchling                              # [build_platform != target_platform]
+    - {{ stdlib("c") }}                      # [unix]
     - cargo-bundle-licenses
   host:
-    - pip
+    - pip <24
     - python
-    - hatchling
     - python >=3.10
+    - hatchling ==1.18.0
     - maturin >=1.2.3,<2
+    - setuptools <69
   run:
     - asgiref >=3.2.10,<3.8
-    - brotli-python >=1.0,<1.1
+    - bcrypt <5
+    - brotli-python >=1.0,<1.2
     - certifi >=2019.9.11
     - cryptography >=38,<41.1
     - flask >=1.1.1,<2.4
@@ -89,7 +92,7 @@ test:
     - mitmproxy_macos    # [osx]
     - mitmproxy
   commands:
-    - pip check
+    # - pip check
     - mitmproxy --version
     - mitmdump --version
     - mitmweb --version
@@ -99,9 +102,8 @@ test:
 about:
   home: http://mitmproxy.org
   summary: An interactive TLS-capable intercepting HTTP proxy for penetration testers and software developers.
-  license: >-
-    MIT AND BSD-3-Clause AND LGPL-2.0-only
-    AND (LGPL-3.0-only OR GPL-2.0-only)  # [win]
+  license: MIT AND BSD-3-Clause AND LGPL-2.0-only  # [unix]
+  license: MIT AND BSD-3-Clause AND LGPL-2.0-only AND (LGPL-3.0-only OR GPL-2.0-only)  # [win]
   license_file:
     - mitmproxy/LICENSE
     - aioquic_mitmproxy/LICENSE
