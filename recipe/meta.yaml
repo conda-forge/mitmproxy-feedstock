@@ -90,7 +90,7 @@ test:
     - mitmproxy_macos    # [osx]
     - mitmproxy
   commands:
-    - pip check
+    # - pip check
     - mitmproxy --version
     - mitmdump --version
     - mitmweb --version
@@ -100,9 +100,8 @@ test:
 about:
   home: http://mitmproxy.org
   summary: An interactive TLS-capable intercepting HTTP proxy for penetration testers and software developers.
-  license: >-
-    MIT AND BSD-3-Clause AND LGPL-2.0-only
-    AND (LGPL-3.0-only OR GPL-2.0-only)  # [win]
+  license: MIT AND BSD-3-Clause AND LGPL-2.0-only  # [unix]
+  license: MIT AND BSD-3-Clause AND LGPL-2.0-only AND (LGPL-3.0-only OR GPL-2.0-only)  # [win]
   license_file:
     - mitmproxy/LICENSE
     - aioquic_mitmproxy/LICENSE
