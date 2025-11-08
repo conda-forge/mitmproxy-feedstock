@@ -57,6 +57,7 @@ requirements:
     - maturin >=1.2.3,<2
   run:
     - asgiref >=3.2.10,<3.8
+    - bcrypt <5
     - brotli-python >=1.0,<1.1
     - certifi >=2019.9.11
     - cryptography >=38,<41.1
