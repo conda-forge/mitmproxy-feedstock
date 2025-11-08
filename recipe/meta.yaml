@@ -22,16 +22,15 @@ source:
     folder: mitmproxy-rs
 
 build:
-  number: 1
+  number: 2
   skip: true  # [py<310]
   script:
-    {% set _pip_cmd = PYTHON + " -m pip install -vv --no-deps --no-build-isolation" %}
-    - {{ _pip_cmd }} ./aioquic_mitmproxy
-    - {{ _pip_cmd }} ./urwid-mitmproxy
-    - {{ _pip_cmd }} ./mitmproxy-rs/mitmproxy-macos    # [osx]
-    - {{ _pip_cmd }} ./mitmproxy-rs/mitmproxy-windows  # [win]
-    - {{ _pip_cmd }} ./mitmproxy-rs/mitmproxy-rs
-    - {{ _pip_cmd }} ./mitmproxy
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./aioquic_mitmproxy
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./urwid-mitmproxy
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./mitmproxy-rs/mitmproxy-macos    # [osx]
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./mitmproxy-rs/mitmproxy-windows  # [win]
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./mitmproxy-rs/mitmproxy-rs
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation ./mitmproxy
   entry_points:
     - mitmproxy = mitmproxy.tools.main:mitmproxy
     - mitmdump = mitmproxy.tools.main:mitmdump
@@ -56,7 +55,8 @@ requirements:
     - maturin >=1.2.3,<2
   run:
     - asgiref >=3.2.10,<3.8
-    - brotli-python >=1.0,<1.1
+    - bcrypt <5
+    - brotli-python >=1.0,<1.2
     - certifi >=2019.9.11
     - cryptography >=38,<41.1
     - flask >=1.1.1,<2.4
