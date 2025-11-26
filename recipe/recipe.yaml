@@ -41,15 +41,19 @@ requirements:
     - mitmproxy-rs >=0.12.6,<0.13
     - msgpack-python >=1.0.0,<=1.1.2
     - if: win
-      then: pydivert >=2.0.3,<=2.1.0
+      then:
+        - __win
+        - pydivert >=2.0.3,<=2.1.0
+    - if: unix
+      then:
+        - __unix
     - pyopenssl >=24.3,<=25.3.0
     - pyparsing >=2.4.2,<=3.2.5
     - pyperclip >=1.9.0,<=1.11.0
     - ruamel.yaml >=0.18.10,<=0.18.16
     - sortedcontainers >=2.3,<=2.4.0
     - tornado >=6.5.0,<=6.5.2
-    - if: match(python, "<3.13")
-      then: typing-extensions >=4.13.2,<=4.14
+    - typing-extensions >=4.13.2,<=4.14
     - urwid >=2.6.14,<=3.0.3
     - wsproto >=1.0,<=1.2.0
     - publicsuffix2 >=2.20190812,<=2.20191221
