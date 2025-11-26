@@ -18,6 +18,7 @@ build:
   script:
     - ${{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation .
   python:
+    # if ommitted, the windows tests fail
     entry_points:
       - mitmproxy = mitmproxy.tools.main:mitmproxy
       - mitmdump = mitmproxy.tools.main:mitmdump
