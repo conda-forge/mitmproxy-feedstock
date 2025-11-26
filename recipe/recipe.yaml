@@ -1,8 +1,8 @@
 schema_version: 1
 
 context:
-  version: 12.2.1
-  python_min: 3.12
+  version: "12.2.1"
+  python_min: "3.12"
 
 package:
   name: mitmproxy
@@ -20,7 +20,7 @@ build:
 
 requirements:
   host:
-    - python ${{ python_min }}
+    - python ${{ python_min }}.*
     - pip
     - setuptools
   run:
