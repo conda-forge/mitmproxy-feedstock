@@ -9,7 +9,7 @@ package:
   version: ${{ version }}
 
 source:
-  url: https://github.com/mitmproxy/mitmproxy/archive/${{ version }}.tar.gz
+  url: https://github.com/mitmproxy/mitmproxy/archive/v${{ version }}.tar.gz
   sha256: 73a131a533a163ac4d9da7695d0bf0c19422c2b47757c39da4833257732fdb90
 
 build:
