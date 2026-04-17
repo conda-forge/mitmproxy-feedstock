@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "12.2.1"
+  version: "12.2.2"
   python_min: "3.12"
 
 package:
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://github.com/mitmproxy/mitmproxy/archive/v${{ version }}.tar.gz
-  sha256: 73a131a533a163ac4d9da7695d0bf0c19422c2b47757c39da4833257732fdb90
+  sha256: feb7cefb4d5dd2d4856c09f0a37ac63d592a8a705a1a93c13f82fa1c8a65dcb6
 
 build:
   number: 0
