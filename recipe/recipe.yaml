@@ -63,7 +63,7 @@ requirements:
     - publicsuffix2 >=2.20190812,<=2.20191221
     - zstandard >=0.25,<=0.25.0
     - typing_extensions >=4.13.2,<=4.14
-    - brotli >=1.0,<=1.2.0
+    - brotli-python >=1.0,<=1.2.0  # PyPI: Brotli
 tests:
   - python:
       imports:
